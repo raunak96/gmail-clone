@@ -1,6 +1,7 @@
 .mail {
 	flex: 1;
 	background-color: #fff;
+	overflow: scroll;
 }
 .mail_toolsLeft {
 	display: flex;
@@ -10,6 +11,10 @@
 	display: flex;
 	justify-content: space-between;
 	border-bottom: 1px solid whitesmoke;
+	position: sticky;
+	top: 0;
+	background-color: #fff;
+	z-index: 50;
 }
 .vertLine {
 	height: 70%;

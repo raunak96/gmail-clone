@@ -20,6 +20,8 @@ import { useHistory, useParams } from "react-router";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { selectMail, selectMailToOpen } from "../features/mailSlice";
+import { Helmet } from "react-helmet-async";
+import { selectUser } from "../features/userSlice";
 // import { useDocument } from "react-firebase-hooks/firestore";
 // import { db } from "../firebase";
 // import moment from "moment";
@@ -27,6 +29,7 @@ import { selectMail, selectMailToOpen } from "../features/mailSlice";
 const Mail = () => {
 	const history = useHistory();
 	const { subject, title, time, description } = useSelector(selectMailToOpen);
+	const user = useSelector(selectUser);
 	const dispatch = useDispatch();
 	const { type } = useParams();
 
@@ -49,86 +52,93 @@ const Mail = () => {
 	// 	[localMail, mailSnapshot]
 	// );
 	return (
-		<div className={styles.mail}>
-			<div className={styles.mail_tools}>
-				<div className={styles.mail_toolsLeft}>
-					<IconButton
-						onClick={() => {
-							dispatch(selectMail());
-							history.push(`/${type}`);
-						}}>
-						<ArrowBackIcon />
-					</IconButton>
-					<IconButton>
-						<MoveToInboxIcon />
-					</IconButton>
-					<IconButton>
-						<ErrorIcon />
-					</IconButton>
-					<IconButton>
-						<DeleteIcon />
-					</IconButton>
-					<div className={styles.vertLine}></div>
-					<IconButton>
-						<EmailIcon />
-					</IconButton>
-					<IconButton>
-						<WatchLaterIcon />
-					</IconButton>
-					<IconButton>
-						<CheckCircleIcon />
-					</IconButton>
-					<span className={styles.vertLine}></span>
-					<IconButton>
-						<LabelImportantIcon />
-					</IconButton>
-					<IconButton>
-						<MoreVertIcon />
-					</IconButton>
-				</div>
-				<span className={styles.mail_toolsRight}>
-					<IconButton>
-						<UnfoldMoreIcon />
-					</IconButton>
-					<IconButton>
-						<PrintIcon />
-					</IconButton>
-					<IconButton>
-						<ExitToAppIcon />
-					</IconButton>
-				</span>
-			</div>
-			<div className={styles.mail_body}>
-				<div className={styles.mail_bodyHeader}>
-					<div className={styles.mail_bodyHeaderUpper}>
-						<h2>{subject}</h2>
-						<LabelImportantIcon className={styles.mailImportant} />
+		<>
+			<Helmet>
+				<title>{`${subject} - ${user.email} - Gmail`}</title>
+			</Helmet>
+			<div className={styles.mail}>
+				<div className={styles.mail_tools}>
+					<div className={styles.mail_toolsLeft}>
+						<IconButton
+							onClick={() => {
+								dispatch(selectMail());
+								history.push(`/${type}`);
+							}}>
+							<ArrowBackIcon />
+						</IconButton>
+						<IconButton>
+							<MoveToInboxIcon />
+						</IconButton>
+						<IconButton>
+							<ErrorIcon />
+						</IconButton>
+						<IconButton>
+							<DeleteIcon />
+						</IconButton>
+						<div className={styles.vertLine}></div>
+						<IconButton>
+							<EmailIcon />
+						</IconButton>
+						<IconButton>
+							<WatchLaterIcon />
+						</IconButton>
+						<IconButton>
+							<CheckCircleIcon />
+						</IconButton>
+						<span className={styles.vertLine}></span>
+						<IconButton>
+							<LabelImportantIcon />
+						</IconButton>
+						<IconButton>
+							<MoreVertIcon />
+						</IconButton>
 					</div>
-					<div className={styles.mail_bodyHeaderLower}>
-						<p>{title}</p>
-						<div className={styles.bodyHeaderLower_right}>
-							<p className={styles.mail_time}>{time}</p>
-							<IconButton>
-								<ReplyIcon />
-							</IconButton>
-							<IconButton>
-								<StarOutlineIcon />
-							</IconButton>
-							<IconButton>
-								<MoreVertIcon />
-							</IconButton>
+					<span className={styles.mail_toolsRight}>
+						<IconButton>
+							<UnfoldMoreIcon />
+						</IconButton>
+						<IconButton>
+							<PrintIcon />
+						</IconButton>
+						<IconButton>
+							<ExitToAppIcon />
+						</IconButton>
+					</span>
+				</div>
+				<div className={styles.mail_body}>
+					<div className={styles.mail_bodyHeader}>
+						<div className={styles.mail_bodyHeaderUpper}>
+							<h2>{subject}</h2>
+							<LabelImportantIcon
+								className={styles.mailImportant}
+							/>
+						</div>
+						<div className={styles.mail_bodyHeaderLower}>
+							<p>{title}</p>
+							<div className={styles.bodyHeaderLower_right}>
+								<p className={styles.mail_time}>{time}</p>
+								<IconButton>
+									<ReplyIcon />
+								</IconButton>
+								<IconButton>
+									<StarOutlineIcon />
+								</IconButton>
+								<IconButton>
+									<MoreVertIcon />
+								</IconButton>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div className={styles.mail_message}>
-					<p>{description}</p>
-				</div>
-				<div className={styles.mail_bodyFooter}>
-					<Button startIcon={<ReplyIcon />}>Reply</Button>
-					<Button startIcon={<ForwardIcon />}>Forward</Button>
+					<div className={styles.mail_message}>
+						<p>{description}</p>
+					</div>
+					<div className={styles.mail_bodyFooter}>
+						<Button startIcon={<ReplyIcon />}>Reply</Button>
+						<Button startIcon={<ForwardIcon />}>Forward</Button>
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

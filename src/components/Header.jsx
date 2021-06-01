@@ -11,9 +11,11 @@ import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../features/userSlice";
 import { auth } from "../firebase";
+import { useHistory } from "react-router";
 
 const Header = () => {
 	const user = useSelector(selectUser);
+	const history = useHistory();
 	const dispatch = useDispatch();
 	const signOut = async () => {
 		await auth.signOut();
@@ -25,7 +27,14 @@ const Header = () => {
 				<IconButton>
 					<MenuIcon />
 				</IconButton>
-				<img src={`${process.env.PUBLIC_URL}/gmail.png`} alt="" />
+				<div
+					className={styles.homeLogo}
+					onClick={() => history.push("/")}>
+					<img
+						src={`${process.env.PUBLIC_URL}/gmail.png`}
+						alt="Home"
+					/>
+				</div>
 			</div>
 			<div className={styles.header_middle}>
 				<SearchIcon className={styles.icons} />

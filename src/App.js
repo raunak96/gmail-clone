@@ -18,6 +18,7 @@ import Login from "./components/Login";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
 import Loader from "./components/Loader";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
 	const isOpenComposeMessage = useSelector(selectisOpenComposeMessage);
@@ -38,32 +39,34 @@ function App() {
 	}, [user, dispatch]);
 
 	return (
-		<Router>
-			{currentUser ? (
-				<div className={styles.app}>
-					<Header />
-					<div className={styles.app_body}>
-						<Sidebar />
-						<Switch>
-							<Route exact path="/">
-								<Redirect to="/inbox" />
-							</Route>
-							<Route exact path="/:type">
-								<EmailList />
-							</Route>
-							<Route path="/:type/mail/:id">
-								<Mail />
-							</Route>
-						</Switch>
+		<HelmetProvider>
+			<Router>
+				{currentUser ? (
+					<div className={styles.app}>
+						<Header />
+						<div className={styles.app_body}>
+							<Sidebar />
+							<Switch>
+								<Route exact path="/">
+									<Redirect to="/inbox" />
+								</Route>
+								<Route exact path="/:type">
+									<EmailList />
+								</Route>
+								<Route path="/:type/mail/:id">
+									<Mail />
+								</Route>
+							</Switch>
+						</div>
+						{isOpenComposeMessage && <ComposeMail />}
 					</div>
-					{isOpenComposeMessage && <ComposeMail />}
-				</div>
-			) : isLoading ? (
-				<Loader />
-			) : (
-				<Login />
-			)}
-		</Router>
+				) : isLoading ? (
+					<Loader />
+				) : (
+					<Login />
+				)}
+			</Router>
+		</HelmetProvider>
 	);
 }
 

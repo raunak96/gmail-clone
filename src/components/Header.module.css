@@ -9,9 +9,13 @@
 	display: flex;
 	align-items: center;
 }
-.header_left > img {
-	object-fit: contain;
+.homeLogo {
 	height: 35px;
+	cursor: pointer;
+}
+.homeLogo > img {
+	height: 100%;
+	object-fit: contain;
 	margin-left: 5px;
 }
 
