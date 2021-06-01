@@ -1,0 +1,86 @@
+.mail {
+	flex: 1;
+	background-color: #fff;
+}
+.mail_toolsLeft {
+	display: flex;
+	align-items: center;
+}
+.mail_tools {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid whitesmoke;
+}
+.vertLine {
+	height: 70%;
+	width: 2px;
+	background-color: whitesmoke;
+	display: inline-block;
+	margin: 0 0.8rem;
+}
+.mail_body {
+	display: flex;
+	flex-direction: column;
+	margin: 2rem;
+	padding: 1.2rem;
+	background-color: #fff;
+	height: 100vh;
+}
+.mail_bodyHeader {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1.2rem;
+}
+.mailImportant {
+	color: #e8ab02 !important;
+}
+.mail_bodyHeaderUpper > h2 {
+	font-weight: 400;
+	margin-right: 1.2rem;
+}
+.mail_bodyHeaderUpper {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+.mail_bodyHeaderLower {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.mail_message {
+	margin: 1rem auto 0;
+}
+.mail_message > P {
+	padding: 0.6rem;
+	overflow-wrap: break-word;
+}
+.bodyHeaderLower_right {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+}
+.mail_time {
+	color: grey;
+	font-size: 0.7rem;
+	margin-right: 3px;
+}
+.mail_bodyFooter {
+	margin-top: 3rem;
+	display: flex;
+	justify-content: flex-start;
+}
+.mail_bodyFooter > button {
+	text-transform: capitalize;
+	border: 1px solid rgb(95, 99, 104);
+	padding: 0.5rem 1rem;
+	margin-right: 1rem;
+	font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial,
+		sans-serif;
+	font-weight: bold;
+	cursor: pointer;
+	color: #5f6368;
+	font-size: 0.875rem;
+	border-radius: 4px;
+}

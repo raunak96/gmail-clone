@@ -1,0 +1,16 @@
+.login {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	overflow: hidden;
+}
+.login > img {
+	height: 300px;
+	object-fit: contain;
+}
+.login > button {
+	margin-bottom: 10px;
+	width: 25%;
+}

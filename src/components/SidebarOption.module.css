@@ -1,0 +1,36 @@
+.sidebarOption {
+	display: flex;
+	align-items: center;
+	height: 2.5rem;
+	padding: 0 0.6rem;
+	border-top-right-radius: 9999px;
+	border-bottom-right-radius: 9999px;
+	cursor: pointer;
+	color: #818181;
+}
+:is(.sidebarOption:hover, .sidebarOption_active),
+:is(.sidebarOption:hover, .sidebarOption_active) > :is(p, h3) {
+	background-color: #fcecec;
+	color: #c04b37;
+	font-weight: 500 !important;
+}
+.sidebarOption:hover > p {
+	display: inline;
+}
+.sidebarOption > .icon {
+	padding: 0.3rem;
+}
+.sidebarOption > h3 {
+	margin-left: 0.6rem;
+	font-size: 1rem;
+	flex: 1;
+	font-weight: 400;
+}
+.sidebarOption > p {
+	display: none;
+	font-weight: 300;
+}
+
+.sidebarOption_active > p {
+	display: inline;
+}

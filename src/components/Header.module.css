@@ -1,0 +1,42 @@
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid whitesmoke;
+	margin-top: 1rem;
+}
+.header_left {
+	display: flex;
+	align-items: center;
+}
+.header_left > img {
+	object-fit: contain;
+	height: 35px;
+	margin-left: 5px;
+}
+
+.header_middle {
+	display: flex;
+	align-items: center;
+	flex: 0.7;
+	background-color: whitesmoke;
+	border-radius: 5px;
+	padding: 0.6rem;
+}
+.header_middle .icons {
+	color: gray;
+}
+.header_middle > input {
+	border: none;
+	outline: none;
+	background-color: transparent;
+	padding: 0.6rem;
+	flex: 1;
+	font-size: medium;
+}
+
+.header_right {
+	display: flex;
+	align-items: center;
+	padding-right: 1.25rem;
+}
